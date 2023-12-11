@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="container my-5">
+  <h1>Búsqueda de Giphy</h1>
+  <form method="post" action="/">
+    <div class="form-group">
+      <label for="palabra_clave">Palabra Clave:</label>
+      <input type="text" name="palabra_clave" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Buscar</button>
+  </form>
+</div>
+
+<div class="container">
+  <div class="col-12 pt-2">
+    <h1>Resultados de Giphy</h1>
+    {% if imagenes %}
+    <div class="row">
+      {% for imagen in imagenes %}
+      <div class="card bg-dark text-center col-md-3 col-sm-6 mx-1 my-3">
+        <div class="card-body text-white">
+          <img src="{{ imagen }}" alt="Giphy" class="img-fluid" />
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p>No se encontraron imágenes.</p>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
